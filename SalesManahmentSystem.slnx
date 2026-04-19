@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SalesManahmentSystemBLL/SalesManahmentSystemBLL.csproj" Id="ac0e7563-fabb-4461-83a8-43915e3e0bf9" />
+  <Project Path="SalesManahmentSystemDAL/SalesManahmentSystemDAL.csproj" Id="fe37f4b4-7e45-4374-8618-668c273cce2e" />
+  <Project Path="SalesManahmentSystemPL/SalesManahmentSystemPL.csproj" />
+</Solution>

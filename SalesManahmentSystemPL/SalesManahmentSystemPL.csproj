@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.72" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SalesManahmentSystemBLL\SalesManahmentSystemBLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSaleOrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSaleOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmStockDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmCatagory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
