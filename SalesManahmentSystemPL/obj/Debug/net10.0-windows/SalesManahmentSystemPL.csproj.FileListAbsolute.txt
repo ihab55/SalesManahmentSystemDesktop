@@ -64,3 +64,8 @@ D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\bin\Debug\net10.
 D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\obj\Debug\net10.0-windows\SalesManahmentSystemPL.frmStock.resources
 D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\obj\Debug\net10.0-windows\SalesManahmentSystemPL.frmCustomer.resources
 d:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\obj\Debug\net10.0-windows\SalesManahmentSystemPL.sourcelink.json
+d:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\obj\Debug\net10.0-windows\SalesManahmentSystemPL.frmStockDetails.resources
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\obj\Debug\net10.0-windows\SalesManahmentSystemPL.frmLogin.resources
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\bin\Debug\net10.0-windows\Microsoft.Extensions.Logging.dll
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemPL\bin\Debug\net10.0-windows\Microsoft.Extensions.Logging.EventLog.dll

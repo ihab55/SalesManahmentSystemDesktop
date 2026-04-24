@@ -3,13 +3,13 @@ using SalesManahmentSystemDAL;
 using SalesManahmentSystemDAL.Models;
 using System.Data;
 using System.Text;
+using SalesManahmentSystemBLL.ServicesInterface;
 
 namespace SalesManahmentSystemBLL.Services
 {
-    public class SaleOrderProductService
-
+    public class SaleOrderProductService : ISaleOrderProductService
     {
-        public static IEnumerable<SalesOrderReadProductDTO> GetSaleOrderProductByNameOrID<T>(T nameOrID)
+        public async Task<IEnumerable<SalesOrderReadProductDTO>> GetSaleOrderProductByNameOrID<T>(T nameOrID)
 {
     string query = @"
     SELECT 
@@ -26,7 +26,7 @@ namespace SalesManahmentSystemBLL.Services
     WHERE C.NAME LIKE @NameOrID 
        OR CAST(SO.ID AS VARCHAR) = @ExactID";
 
-    return DataBaseHelper.ExecuteSelect<SalesOrderReadProductDTO>(
+    return await DataBaseHelper.Instance.ExecuteSelect<SalesOrderReadProductDTO>(
         query,
         new
         {
@@ -34,7 +34,7 @@ namespace SalesManahmentSystemBLL.Services
             ExactID = nameOrID         // for ID match
         });
 }
-        public static IEnumerable<SalesOrderReadProductDTO> GetSaleOrderProductByDate(DateTime from, DateTime to)
+        public async Task<IEnumerable<SalesOrderReadProductDTO>> GetSaleOrderProductByDate(DateTime from, DateTime to)
         {
             string query = @"
         SELECT 
@@ -51,13 +51,13 @@ namespace SalesManahmentSystemBLL.Services
         WHERE SO.DATEORDER BETWEEN @FromDate AND @ToDate";
 
             // Pass the dates as a parameters object
-            return DataBaseHelper.ExecuteSelect<SalesOrderReadProductDTO>(query, new
+            return await DataBaseHelper.Instance.ExecuteSelect<SalesOrderReadProductDTO>(query, new
             {
                 FromDate = from,
                 ToDate = to
             });
         }
-        public static string InsertSaleOrderProductsGetCommand(List<SaleOrderProduct> saleOrderProducts)
+        public string InsertSaleOrderProductsGetCommand(List<SaleOrderProduct> saleOrderProducts)
         {
             StringBuilder commandBuilder = new StringBuilder();
             foreach (var item in saleOrderProducts)

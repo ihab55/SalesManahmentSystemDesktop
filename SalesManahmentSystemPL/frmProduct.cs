@@ -1,4 +1,6 @@
-﻿using SalesManahmentSystemBLL.Services;
+﻿using SalesManahmentSystemBLL.DTOs;
+using SalesManahmentSystemBLL.Services;
+using SalesManahmentSystemBLL.ServicesInterface;
 using SalesManahmentSystemDAL.Models;
 using System;
 using System.Collections.Generic;
@@ -12,12 +14,14 @@ namespace SalesManahmentSystemPL
 {
     public partial class frmProduct : Form
     {
-        public frmProduct()
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+
+        public frmProduct(IProductService productService, ICategoryService categoryService)
         {
-            InitializeComponent();
-            cbCatagory.DataSource = CategoryService.GetAllCategories();
-            cbCatagory.DisplayMember = "Name";
-            cbCatagory.ValueMember = "ID";
+            _productService = productService;
+            _categoryService = categoryService;
+             InitializeComponent();
         }
         private bool CheckValidation(TextBox text)
         {
@@ -52,23 +56,23 @@ namespace SalesManahmentSystemPL
         private bool CheckAllValidation()
         {
             return  CheckValidation(txtName) 
-                && CheckValidation(cbCatagory) && CheckValidation(numBPrıce)
-                && CheckValidation(numSPrıce) && CheckValidation(numCount);
+                && CheckValidation(cbCatagory) && CheckValidation(numBPrice)
+                && CheckValidation(numSPrice) && CheckValidation(numCount);
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (CheckAllValidation())
             {
                 string Name = txtName.Text;
-                decimal BuyPrice = numBPrıce.Value;
-                decimal SalePrice = numSPrıce.Value;
+                decimal BuyPrice = numBPrice.Value;
+                decimal SalePrice = numSPrice.Value;
                 double Quantity = Convert.ToDouble(numCount.Value);
                 int CategoryID = Convert.ToInt32(cbCatagory.SelectedValue);
                 
-                MessageBox.Show(ProductService.AddProduct(new Product
+                MessageBox.Show(await _productService.AddProduct(new Product
                     (0, Name, BuyPrice, SalePrice, Quantity, CategoryID)) ?
-                    "تم اضافة الصنف بنجاح!" : "هناك خطا فى الاضافة!");
-                FrmProduct_Load(sender, e);
+                    "تم اضافة الصنف بنجاح!" : "هناك خطا فى الاضافة!","معلومه", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await LoadProducts();
 
             }
         }
@@ -80,38 +84,45 @@ namespace SalesManahmentSystemPL
                 txtID.Text = dgProducts.Rows[e.RowIndex].Cells["IDColumn"].Value?.ToString();
                 txtName.Text = dgProducts.Rows[e.RowIndex].Cells["NameColumn"].Value?.ToString();
                 numCount.Value = Convert.ToDecimal(dgProducts.Rows[e.RowIndex].Cells["QUANTITY"].Value);
-                numSPrıce.Value = Convert.ToDecimal(dgProducts.Rows[e.RowIndex].Cells["SALEPRICE"].Value);
-                numBPrıce.Value = Convert.ToDecimal(dgProducts.Rows[e.RowIndex].Cells["BUYPRICE"].Value);
-                cbCatagory.SelectedValue = Convert.ToInt32(dgProducts.Rows[e.RowIndex].Cells["CATEGORYID"].Value);
+                numSPrice.Value = Convert.ToDecimal(dgProducts.Rows[e.RowIndex].Cells["SALEPRICE"].Value);
+                numBPrice.Value = Convert.ToDecimal(dgProducts.Rows[e.RowIndex].Cells["BUYPRICE"].Value);
+                cbCatagory.Text = dgProducts.Rows[e.RowIndex].Cells["CATEGORYNAME"].Value?.ToString();
             }
         }
 
-        private void FrmProduct_Load(object sender, EventArgs e)
+        private async void FrmProduct_Load(object sender, EventArgs e)
         {
-            dgProducts.DataSource = ProductService.GetAllProducts();
+            cbCatagory.DataSource = await _categoryService.GetAllBasicCategories();
+            cbCatagory.DisplayMember = "Name";
+            cbCatagory.ValueMember = "ID";
+            await LoadProducts();
+        }
+        private async Task LoadProducts()
+        {
+            dgProducts.DataSource = await _productService.GetAllProducts();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             if (CheckAllValidation())
             {
 
                 int ID = Convert.ToInt32(txtID.Text);
                 string Name = txtName.Text;
-                decimal BuyPrice = numBPrıce.Value;
-                decimal SalePrice = numSPrıce.Value;
+                decimal BuyPrice = numBPrice.Value;
+                decimal SalePrice = numSPrice.Value;
                 double Quantity = Convert.ToDouble(numCount.Value);
                 int CategoryID = Convert.ToInt32(cbCatagory.SelectedValue);
 
-                MessageBox.Show(ProductService.UpdateProduct(new Product
+                MessageBox.Show(await _productService.UpdateProduct(new Product
                     (ID, Name, BuyPrice, SalePrice, Quantity, CategoryID)) ?
                     "! تم التعديل بنجاح" : "تاكد من الكتابة بشكل صحيح !", "معلومات",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FrmProduct_Load(sender, e);
+                 await LoadProducts();
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل تريد حذف تلك الصنف",
                 "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -119,15 +130,15 @@ namespace SalesManahmentSystemPL
                 if (CheckValidation(txtID))
                 {
                     int ID = Convert.ToInt32(txtID.Text);
-                    MessageBox.Show(ProductService.DeleteProduct(ID) ?
+                    MessageBox.Show(await _productService.DeleteProduct(ID) ?
                         "تم حذف الصنف" : "هناك مشكلة تواصل مع الدعم", "معلومة",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmProduct_Load(sender, e);
+                     await LoadProducts();
                 }
             }
         }
 
-        private void btnDeleteAll_Click(object sender, EventArgs e)
+        private async void btnDeleteAll_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل تريد حذف الجميع !!",
                 "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -135,29 +146,32 @@ namespace SalesManahmentSystemPL
                 if (CheckValidation(txtID))
                 {
                     int ID = Convert.ToInt32(txtID.Text);
-                    MessageBox.Show(ProductService.DeleteAllProduct() ?
+                    MessageBox.Show(await _productService.DeleteAllProduct() ?
                         "تم حذف الجميع" : "هناك مشكلة تواصل مع الدعم", "معلومة",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmProduct_Load(sender, e);
+                    await LoadProducts();
                 }
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             if (CheckValidation(txtSearch))
             {
-                IEnumerable<Product> categories = ProductService.GetAllProductsByPattern(txtSearch.Text);
-                dgProducts.DataSource = categories;
+                dgProducts.DataSource =
+                    await _productService.GetAllProductsByPattern(txtSearch.Text);
+                
             }
             else
             {
-                FrmProduct_Load(sender, e);
+                 await LoadProducts();
             }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            txtName.Text = txtSearch.Text = string.Empty;
+            numBPrice.Value = numSPrice.Value = numCount.Value = 0;
         }
     }
 }

@@ -31,17 +31,31 @@ namespace SalesManahmentSystemPL
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panTop = new Panel();
             lbHead = new Label();
-            panBotton = new Panel();
-            txtID = new TextBox();
+            panInput = new Panel();
+            panRow2 = new Panel();
+            lbCatagory = new Label();
+            cbCatagory = new ComboBox();
+            lbBPrice = new Label();
+            numBPrice = new NumericUpDown();
+            lbSPrice = new Label();
+            numSPrice = new NumericUpDown();
+            panRow1 = new Panel();
+            lbCount = new Label();
+            numCount = new NumericUpDown();
+            lbName = new Label();
+            txtName = new TextBox();
             lbID = new Label();
-            lbSPrıce = new Label();
-            btnNew = new Button();
-            btnAdd = new Button();
-            btnUpdate = new Button();
-            btnDelete = new Button();
+            txtID = new TextBox();
+            panButtons = new Panel();
             btnDeleteAll = new Button();
+            btnDelete = new Button();
+            btnUpdate = new Button();
+            btnAdd = new Button();
+            btnNew = new Button();
+            panSearch = new Panel();
             btnSearch = new Button();
             txtSearch = new TextBox();
             dgProducts = new DataGridView();
@@ -50,170 +64,359 @@ namespace SalesManahmentSystemPL
             QUANTITY = new DataGridViewTextBoxColumn();
             SALEPRICE = new DataGridViewTextBoxColumn();
             BUYPRICE = new DataGridViewTextBoxColumn();
-            CATEGORYID = new DataGridViewTextBoxColumn();
+            CATEGORYNAME = new DataGridViewTextBoxColumn();
             errorProvider1 = new ErrorProvider(components);
-            lbName = new Label();
-            txtName = new TextBox();
-            lbBPrıce = new Label();
-            lbCount = new Label();
-            lbCatagory = new Label();
-            numBPrıce = new NumericUpDown();
-            numSPrıce = new NumericUpDown();
-            numCount = new NumericUpDown();
-            cbCatagory = new ComboBox();
+            panFooter = new Panel();
+            lbFooter = new Label();
             panTop.SuspendLayout();
+            panInput.SuspendLayout();
+            panRow2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numBPrice).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numSPrice).BeginInit();
+            panRow1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numCount).BeginInit();
+            panButtons.SuspendLayout();
+            panSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgProducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numBPrıce).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numSPrıce).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numCount).BeginInit();
+            panFooter.SuspendLayout();
             SuspendLayout();
             // 
             // panTop
             // 
-            panTop.BackColor = Color.DarkSlateGray;
+            panTop.BackColor = Color.FromArgb(45, 85, 95);
             panTop.Controls.Add(lbHead);
             panTop.Dock = DockStyle.Top;
             panTop.Location = new Point(0, 0);
             panTop.Name = "panTop";
-            panTop.Size = new Size(1148, 93);
+            panTop.Size = new Size(1000, 100);
             panTop.TabIndex = 0;
             // 
             // lbHead
             // 
-            lbHead.AutoSize = true;
-            lbHead.Font = new Font("Dubai", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbHead.ForeColor = SystemColors.Window;
-            lbHead.Location = new Point(438, 19);
+            lbHead.Dock = DockStyle.Fill;
+            lbHead.Font = new Font("Dubai", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbHead.ForeColor = Color.White;
+            lbHead.Location = new Point(0, 0);
             lbHead.Name = "lbHead";
-            lbHead.Size = new Size(184, 51);
-            lbHead.TabIndex = 1;
-            lbHead.Text = "شاشة الاصناف";
+            lbHead.Size = new Size(1000, 100);
+            lbHead.TabIndex = 0;
+            lbHead.Text = "إدارة الأصناف";
+            lbHead.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panBotton
+            // panInput
             // 
-            panBotton.BackColor = Color.DarkSlateGray;
-            panBotton.Dock = DockStyle.Bottom;
-            panBotton.Location = new Point(0, 768);
-            panBotton.Name = "panBotton";
-            panBotton.Size = new Size(1148, 78);
-            panBotton.TabIndex = 0;
+            panInput.BackColor = Color.White;
+            panInput.Controls.Add(panRow2);
+            panInput.Controls.Add(panRow1);
+            panInput.Location = new Point(50, 120);
+            panInput.Name = "panInput";
+            panInput.Size = new Size(900, 200);
+            panInput.TabIndex = 1;
             // 
-            // txtID
+            // panRow2
             // 
-            txtID.Enabled = false;
-            txtID.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtID.Location = new Point(80, 153);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(242, 41);
-            txtID.TabIndex = 3;
-            txtID.TextAlign = HorizontalAlignment.Center;
+            panRow2.BackColor = Color.White;
+            panRow2.Controls.Add(lbCatagory);
+            panRow2.Controls.Add(cbCatagory);
+            panRow2.Controls.Add(lbBPrice);
+            panRow2.Controls.Add(numBPrice);
+            panRow2.Controls.Add(lbSPrice);
+            panRow2.Controls.Add(numSPrice);
+            panRow2.Dock = DockStyle.Bottom;
+            panRow2.Location = new Point(0, 110);
+            panRow2.Name = "panRow2";
+            panRow2.Size = new Size(900, 90);
+            panRow2.TabIndex = 1;
+            // 
+            // lbCatagory
+            // 
+            lbCatagory.AutoSize = true;
+            lbCatagory.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbCatagory.ForeColor = Color.FromArgb(45, 85, 95);
+            lbCatagory.Location = new Point(150, 10);
+            lbCatagory.Name = "lbCatagory";
+            lbCatagory.Size = new Size(98, 34);
+            lbCatagory.TabIndex = 4;
+            lbCatagory.Text = "المجموعة :";
+            lbCatagory.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // cbCatagory
+            // 
+            cbCatagory.BackColor = Color.White;
+            cbCatagory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCatagory.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbCatagory.FormattingEnabled = true;
+            cbCatagory.Location = new Point(30, 45);
+            cbCatagory.Name = "cbCatagory";
+            cbCatagory.Size = new Size(180, 42);
+            cbCatagory.TabIndex = 5;
+            // 
+            // lbBPrice
+            // 
+            lbBPrice.AutoSize = true;
+            lbBPrice.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbBPrice.ForeColor = Color.FromArgb(45, 85, 95);
+            lbBPrice.Location = new Point(430, 10);
+            lbBPrice.Name = "lbBPrice";
+            lbBPrice.Size = new Size(112, 34);
+            lbBPrice.TabIndex = 2;
+            lbBPrice.Text = "سعر الشراء :";
+            lbBPrice.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // numBPrice
+            // 
+            numBPrice.BackColor = Color.White;
+            numBPrice.BorderStyle = BorderStyle.FixedSingle;
+            numBPrice.DecimalPlaces = 2;
+            numBPrice.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numBPrice.Location = new Point(320, 45);
+            numBPrice.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numBPrice.Name = "numBPrice";
+            numBPrice.Size = new Size(220, 41);
+            numBPrice.TabIndex = 3;
+            numBPrice.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lbSPrice
+            // 
+            lbSPrice.AutoSize = true;
+            lbSPrice.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbSPrice.ForeColor = Color.FromArgb(45, 85, 95);
+            lbSPrice.Location = new Point(780, 10);
+            lbSPrice.Name = "lbSPrice";
+            lbSPrice.Size = new Size(101, 34);
+            lbSPrice.TabIndex = 0;
+            lbSPrice.Text = "سعر البيع :";
+            lbSPrice.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // numSPrice
+            // 
+            numSPrice.BackColor = Color.White;
+            numSPrice.BorderStyle = BorderStyle.FixedSingle;
+            numSPrice.DecimalPlaces = 2;
+            numSPrice.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numSPrice.Location = new Point(620, 45);
+            numSPrice.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numSPrice.Name = "numSPrice";
+            numSPrice.Size = new Size(250, 41);
+            numSPrice.TabIndex = 1;
+            numSPrice.TextAlign = HorizontalAlignment.Center;
+            // 
+            // panRow1
+            // 
+            panRow1.BackColor = Color.White;
+            panRow1.Controls.Add(lbCount);
+            panRow1.Controls.Add(numCount);
+            panRow1.Controls.Add(lbName);
+            panRow1.Controls.Add(txtName);
+            panRow1.Controls.Add(lbID);
+            panRow1.Controls.Add(txtID);
+            panRow1.Dock = DockStyle.Top;
+            panRow1.Location = new Point(0, 0);
+            panRow1.Name = "panRow1";
+            panRow1.Size = new Size(900, 90);
+            panRow1.TabIndex = 0;
+            // 
+            // lbCount
+            // 
+            lbCount.AutoSize = true;
+            lbCount.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbCount.ForeColor = Color.FromArgb(45, 85, 95);
+            lbCount.Location = new Point(150, 10);
+            lbCount.Name = "lbCount";
+            lbCount.Size = new Size(72, 34);
+            lbCount.TabIndex = 4;
+            lbCount.Text = "الكمية :";
+            lbCount.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // numCount
+            // 
+            numCount.BackColor = Color.White;
+            numCount.BorderStyle = BorderStyle.FixedSingle;
+            numCount.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numCount.Location = new Point(30, 45);
+            numCount.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numCount.Name = "numCount";
+            numCount.Size = new Size(180, 41);
+            numCount.TabIndex = 5;
+            numCount.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lbName
+            // 
+            lbName.AutoSize = true;
+            lbName.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbName.ForeColor = Color.FromArgb(45, 85, 95);
+            lbName.Location = new Point(430, 10);
+            lbName.Name = "lbName";
+            lbName.Size = new Size(116, 34);
+            lbName.TabIndex = 2;
+            lbName.Text = "اسم الصنف :";
+            lbName.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtName
+            // 
+            txtName.BackColor = Color.White;
+            txtName.BorderStyle = BorderStyle.FixedSingle;
+            txtName.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtName.Location = new Point(320, 45);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(220, 41);
+            txtName.TabIndex = 3;
+            txtName.TextAlign = HorizontalAlignment.Center;
             // 
             // lbID
             // 
             lbID.AutoSize = true;
             lbID.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbID.Location = new Point(80, 109);
+            lbID.ForeColor = Color.FromArgb(45, 85, 95);
+            lbID.Location = new Point(780, 10);
             lbID.Name = "lbID";
-            lbID.Size = new Size(117, 34);
-            lbID.TabIndex = 4;
-            lbID.Text = "رقم الاصناف :";
+            lbID.Size = new Size(109, 34);
+            lbID.TabIndex = 0;
+            lbID.Text = "رقم الصنف :";
+            lbID.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // lbSPrıce
+            // txtID
             // 
-            lbSPrıce.AutoSize = true;
-            lbSPrıce.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbSPrıce.Location = new Point(80, 204);
-            lbSPrıce.Name = "lbSPrıce";
-            lbSPrıce.Size = new Size(101, 34);
-            lbSPrıce.TabIndex = 5;
-            lbSPrıce.Text = "سعر البيع :";
+            txtID.BackColor = Color.FromArgb(245, 247, 250);
+            txtID.BorderStyle = BorderStyle.FixedSingle;
+            txtID.Enabled = false;
+            txtID.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtID.Location = new Point(620, 45);
+            txtID.Name = "txtID";
+            txtID.ReadOnly = true;
+            txtID.Size = new Size(250, 41);
+            txtID.TabIndex = 1;
+            txtID.TextAlign = HorizontalAlignment.Center;
             // 
-            // btnNew
+            // panButtons
             // 
-            btnNew.BackColor = Color.DarkSlateGray;
-            btnNew.Font = new Font("Dubai Medium", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNew.ForeColor = SystemColors.Window;
-            btnNew.Location = new Point(50, 321);
-            btnNew.Name = "btnNew";
-            btnNew.Size = new Size(189, 48);
-            btnNew.TabIndex = 6;
-            btnNew.Text = "جديد";
-            btnNew.UseVisualStyleBackColor = false;
-            btnNew.Click += btnNew_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.BackColor = Color.DarkSlateGray;
-            btnAdd.Font = new Font("Dubai Medium", 10.2F, FontStyle.Bold);
-            btnAdd.ForeColor = SystemColors.Window;
-            btnAdd.Location = new Point(263, 321);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(189, 48);
-            btnAdd.TabIndex = 7;
-            btnAdd.Text = "أضافة";
-            btnAdd.UseVisualStyleBackColor = false;
-            btnAdd.Click += btnAdd_Click;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.BackColor = Color.DarkSlateGray;
-            btnUpdate.Font = new Font("Dubai Medium", 10.2F, FontStyle.Bold);
-            btnUpdate.ForeColor = SystemColors.Window;
-            btnUpdate.Location = new Point(476, 321);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(189, 48);
-            btnUpdate.TabIndex = 8;
-            btnUpdate.Text = " تعديل";
-            btnUpdate.UseVisualStyleBackColor = false;
-            btnUpdate.Click += btnUpdate_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.DarkSlateGray;
-            btnDelete.Font = new Font("Dubai Medium", 10.2F, FontStyle.Bold);
-            btnDelete.ForeColor = SystemColors.Window;
-            btnDelete.Location = new Point(689, 321);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(189, 48);
-            btnDelete.TabIndex = 9;
-            btnDelete.Text = "حذف";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
+            panButtons.Controls.Add(btnDeleteAll);
+            panButtons.Controls.Add(btnDelete);
+            panButtons.Controls.Add(btnUpdate);
+            panButtons.Controls.Add(btnAdd);
+            panButtons.Controls.Add(btnNew);
+            panButtons.Location = new Point(50, 330);
+            panButtons.Name = "panButtons";
+            panButtons.Size = new Size(900, 70);
+            panButtons.TabIndex = 2;
             // 
             // btnDeleteAll
             // 
-            btnDeleteAll.BackColor = Color.DarkSlateGray;
-            btnDeleteAll.Font = new Font("Dubai Medium", 10.2F, FontStyle.Bold);
-            btnDeleteAll.ForeColor = SystemColors.Window;
-            btnDeleteAll.Location = new Point(902, 321);
+            btnDeleteAll.BackColor = Color.FromArgb(97, 97, 97);
+            btnDeleteAll.Cursor = Cursors.Hand;
+            btnDeleteAll.FlatAppearance.BorderSize = 0;
+            btnDeleteAll.FlatStyle = FlatStyle.Flat;
+            btnDeleteAll.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeleteAll.ForeColor = Color.White;
+            btnDeleteAll.Location = new Point(40, 10);
             btnDeleteAll.Name = "btnDeleteAll";
-            btnDeleteAll.Size = new Size(189, 48);
-            btnDeleteAll.TabIndex = 10;
-            btnDeleteAll.Text = "حذف الجميع";
+            btnDeleteAll.Size = new Size(130, 50);
+            btnDeleteAll.TabIndex = 4;
+            btnDeleteAll.Text = "🗑️ حذف الكل";
             btnDeleteAll.UseVisualStyleBackColor = false;
             btnDeleteAll.Click += btnDeleteAll_Click;
             // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(211, 47, 47);
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(215, 10);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(130, 50);
+            btnDelete.TabIndex = 3;
+            btnDelete.Text = "🗑️ حذف";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = Color.FromArgb(25, 118, 210);
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.Location = new Point(390, 10);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(130, 50);
+            btnUpdate.TabIndex = 2;
+            btnUpdate.Text = "✏️ تعديل";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(46, 125, 50);
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(565, 10);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(130, 50);
+            btnAdd.TabIndex = 1;
+            btnAdd.Text = "✅ إضافة";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnNew
+            // 
+            btnNew.BackColor = Color.FromArgb(45, 85, 95);
+            btnNew.Cursor = Cursors.Hand;
+            btnNew.FlatAppearance.BorderSize = 0;
+            btnNew.FlatStyle = FlatStyle.Flat;
+            btnNew.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNew.ForeColor = Color.White;
+            btnNew.Location = new Point(740, 10);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(130, 50);
+            btnNew.TabIndex = 0;
+            btnNew.Text = "📝 جديد";
+            btnNew.UseVisualStyleBackColor = false;
+            btnNew.Click += btnNew_Click;
+            // 
+            // panSearch
+            // 
+            panSearch.BackColor = Color.FromArgb(245, 247, 250);
+            panSearch.Controls.Add(btnSearch);
+            panSearch.Controls.Add(txtSearch);
+            panSearch.Location = new Point(50, 410);
+            panSearch.Name = "panSearch";
+            panSearch.Size = new Size(900, 70);
+            panSearch.TabIndex = 3;
+            // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.DarkSlateGray;
-            btnSearch.Font = new Font("Dubai Medium", 10.2F, FontStyle.Bold);
-            btnSearch.ForeColor = SystemColors.Window;
-            btnSearch.Location = new Point(618, 397);
+            btnSearch.BackColor = Color.FromArgb(45, 85, 95);
+            btnSearch.Cursor = Cursors.Hand;
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(650, 10);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(183, 41);
-            btnSearch.TabIndex = 11;
-            btnSearch.Text = "بحث";
+            btnSearch.Size = new Size(230, 50);
+            btnSearch.TabIndex = 1;
+            btnSearch.Text = "🔍 بحث";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
+            txtSearch.BackColor = Color.White;
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(235, 396);
+            txtSearch.Location = new Point(20, 15);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(351, 41);
-            txtSearch.TabIndex = 12;
+            txtSearch.PlaceholderText = "ابحث باسم المجموعة او رقم الصنف... ";
+            txtSearch.Size = new Size(620, 41);
+            txtSearch.TabIndex = 0;
             txtSearch.TextAlign = HorizontalAlignment.Center;
             // 
             // dgProducts
@@ -223,18 +426,37 @@ namespace SalesManahmentSystemPL
             dgProducts.AllowUserToResizeColumns = false;
             dgProducts.AllowUserToResizeRows = false;
             dgProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgProducts.BackgroundColor = Color.MistyRose;
-            dgProducts.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dgProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgProducts.Columns.AddRange(new DataGridViewColumn[] { IDColumn, NameColumn, QUANTITY, SALEPRICE, BUYPRICE, CATEGORYID });
-            dgProducts.Location = new Point(0, 481);
+            dgProducts.BackgroundColor = Color.White;
+            dgProducts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(45, 85, 95);
+            dataGridViewCellStyle1.Font = new Font("Dubai", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(45, 85, 95);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgProducts.ColumnHeadersHeight = 40;
+            dgProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgProducts.Columns.AddRange(new DataGridViewColumn[] { IDColumn, NameColumn, QUANTITY, SALEPRICE, BUYPRICE, CATEGORYNAME });
+            dgProducts.EnableHeadersVisualStyles = false;
+            dgProducts.GridColor = Color.FromArgb(224, 224, 224);
+            dgProducts.Location = new Point(50, 500);
             dgProducts.MultiSelect = false;
             dgProducts.Name = "dgProducts";
             dgProducts.ReadOnly = true;
+            dgProducts.RowHeadersVisible = false;
             dgProducts.RowHeadersWidth = 51;
+            dgProducts.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgProducts.RowTemplate.DefaultCellStyle.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgProducts.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            dgProducts.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 201);
+            dgProducts.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgProducts.RowTemplate.Height = 40;
             dgProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgProducts.Size = new Size(1148, 289);
-            dgProducts.TabIndex = 13;
+            dgProducts.Size = new Size(900, 200);
+            dgProducts.TabIndex = 4;
             dgProducts.RowEnter += dgProducts_RowEnter;
             // 
             // IDColumn
@@ -248,7 +470,7 @@ namespace SalesManahmentSystemPL
             // NameColumn
             // 
             NameColumn.DataPropertyName = "Name";
-            NameColumn.HeaderText = "أسم الصنف";
+            NameColumn.HeaderText = "اسم الصنف";
             NameColumn.MinimumWidth = 6;
             NameColumn.Name = "NameColumn";
             NameColumn.ReadOnly = true;
@@ -277,177 +499,117 @@ namespace SalesManahmentSystemPL
             BUYPRICE.Name = "BUYPRICE";
             BUYPRICE.ReadOnly = true;
             // 
-            // CATEGORYID
+            // CATEGORYNAME
             // 
-            CATEGORYID.DataPropertyName = "CATEGORYID";
-            CATEGORYID.HeaderText = "المجموعة";
-            CATEGORYID.MinimumWidth = 6;
-            CATEGORYID.Name = "CATEGORYID";
-            CATEGORYID.ReadOnly = true;
+            CATEGORYNAME.DataPropertyName = "CATEGORYNAME";
+            CATEGORYNAME.HeaderText = "المجموعة";
+            CATEGORYNAME.MinimumWidth = 6;
+            CATEGORYNAME.Name = "CATEGORYNAME";
+            CATEGORYNAME.ReadOnly = true;
             // 
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
             // 
-            // lbName
+            // panFooter
             // 
-            lbName.AutoSize = true;
-            lbName.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbName.Location = new Point(441, 109);
-            lbName.Name = "lbName";
-            lbName.Size = new Size(119, 34);
-            lbName.TabIndex = 15;
-            lbName.Text = "أسم لاصناف :";
+            panFooter.BackColor = Color.FromArgb(45, 85, 95);
+            panFooter.Controls.Add(lbFooter);
+            panFooter.Dock = DockStyle.Bottom;
+            panFooter.Location = new Point(0, 720);
+            panFooter.Name = "panFooter";
+            panFooter.Size = new Size(1000, 50);
+            panFooter.TabIndex = 5;
             // 
-            // txtName
+            // lbFooter
             // 
-            txtName.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtName.Location = new Point(441, 153);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(242, 41);
-            txtName.TabIndex = 14;
-            txtName.TextAlign = HorizontalAlignment.Center;
-            // 
-            // lbBPrıce
-            // 
-            lbBPrıce.AutoSize = true;
-            lbBPrıce.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbBPrıce.Location = new Point(441, 204);
-            lbBPrıce.Name = "lbBPrıce";
-            lbBPrıce.Size = new Size(112, 34);
-            lbBPrıce.TabIndex = 17;
-            lbBPrıce.Text = "سعر الشراء :";
-            // 
-            // lbCount
-            // 
-            lbCount.AutoSize = true;
-            lbCount.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbCount.Location = new Point(793, 109);
-            lbCount.Name = "lbCount";
-            lbCount.Size = new Size(72, 34);
-            lbCount.TabIndex = 19;
-            lbCount.Text = "الكمية :";
-            // 
-            // lbCatagory
-            // 
-            lbCatagory.AutoSize = true;
-            lbCatagory.Font = new Font("Dubai", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbCatagory.Location = new Point(793, 204);
-            lbCatagory.Name = "lbCatagory";
-            lbCatagory.Size = new Size(98, 34);
-            lbCatagory.TabIndex = 21;
-            lbCatagory.Text = "المجموعة :";
-            // 
-            // numBPrıce
-            // 
-            numBPrıce.Location = new Point(441, 253);
-            numBPrıce.Name = "numBPrıce";
-            numBPrıce.Size = new Size(242, 36);
-            numBPrıce.TabIndex = 22;
-            // 
-            // numSPrıce
-            // 
-            numSPrıce.Location = new Point(80, 253);
-            numSPrıce.Name = "numSPrıce";
-            numSPrıce.Size = new Size(242, 36);
-            numSPrıce.TabIndex = 22;
-            // 
-            // numCount
-            // 
-            numCount.Location = new Point(793, 155);
-            numCount.Name = "numCount";
-            numCount.Size = new Size(242, 36);
-            numCount.TabIndex = 23;
-            // 
-            // cbCatagory
-            // 
-            cbCatagory.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbCatagory.FormattingEnabled = true;
-            cbCatagory.Location = new Point(793, 253);
-            cbCatagory.Name = "cbCatagory";
-            cbCatagory.Size = new Size(242, 37);
-            cbCatagory.TabIndex = 24;
+            lbFooter.Dock = DockStyle.Fill;
+            lbFooter.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbFooter.ForeColor = Color.White;
+            lbFooter.Location = new Point(0, 0);
+            lbFooter.Name = "lbFooter";
+            lbFooter.Size = new Size(1000, 50);
+            lbFooter.TabIndex = 0;
+            lbFooter.Text = "نظام إدارة المبيعات - إيهاب أيمن - ehab.ayman7420@gmail.com";
+            lbFooter.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmProduct
             // 
             AutoScaleDimensions = new SizeF(9F, 29F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            BackColor = Color.Snow;
-            ClientSize = new Size(1148, 846);
-            Controls.Add(cbCatagory);
-            Controls.Add(numCount);
-            Controls.Add(numSPrıce);
-            Controls.Add(numBPrıce);
-            Controls.Add(lbCatagory);
-            Controls.Add(lbCount);
-            Controls.Add(lbBPrıce);
-            Controls.Add(lbName);
-            Controls.Add(txtName);
+            BackColor = Color.FromArgb(250, 250, 250);
+            ClientSize = new Size(1000, 770);
+            Controls.Add(panFooter);
             Controls.Add(dgProducts);
-            Controls.Add(txtSearch);
-            Controls.Add(btnSearch);
-            Controls.Add(btnDeleteAll);
-            Controls.Add(btnDelete);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnAdd);
-            Controls.Add(btnNew);
-            Controls.Add(lbSPrıce);
-            Controls.Add(lbID);
-            Controls.Add(txtID);
-            Controls.Add(panBotton);
+            Controls.Add(panSearch);
+            Controls.Add(panButtons);
+            Controls.Add(panInput);
             Controls.Add(panTop);
             Font = new Font("Dubai", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            KeyPreview = true;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 5, 3, 5);
+            MaximizeBox = false;
             Name = "frmProduct";
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "شاشة الاصناف";
+            Text = "إدارة الأصناف";
             Load += FrmProduct_Load;
             panTop.ResumeLayout(false);
-            panTop.PerformLayout();
+            panInput.ResumeLayout(false);
+            panRow2.ResumeLayout(false);
+            panRow2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numBPrice).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numSPrice).EndInit();
+            panRow1.ResumeLayout(false);
+            panRow1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numCount).EndInit();
+            panButtons.ResumeLayout(false);
+            panSearch.ResumeLayout(false);
+            panSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgProducts).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numBPrıce).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numSPrıce).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numCount).EndInit();
+            panFooter.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Panel panTop;
         private Label lbHead;
-        private Panel panBotton;
-        private TextBox txtID;
+        private Panel panInput;
+        private Panel panRow1;
         private Label lbID;
-        private Label lbSPrıce;
+        private TextBox txtID;
+        private Label lbName;
+        private TextBox txtName;
+        private Label lbCount;
+        private NumericUpDown numCount;
+        private Panel panRow2;
+        private Label lbSPrice;
+        private NumericUpDown numSPrice;
+        private Label lbBPrice;
+        private NumericUpDown numBPrice;
+        private Label lbCatagory;
+        private ComboBox cbCatagory;
+        private Panel panButtons;
         private Button btnNew;
         private Button btnAdd;
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnDeleteAll;
+        private Panel panSearch;
         private Button btnSearch;
         private TextBox txtSearch;
         private DataGridView dgProducts;
         private ErrorProvider errorProvider1;
-        private Label lbCatagory;
-        private Label lbCount;
-        private Label lbBPrıce;
-        private Label lbName;
-        private TextBox txtName;
-        private NumericUpDown numCount;
-        private NumericUpDown numSPrıce;
-        private NumericUpDown numBPrıce;
-        private ComboBox cbCatagory;
+        private Panel panFooter;
+        private Label lbFooter;
         private DataGridViewTextBoxColumn IDColumn;
         private DataGridViewTextBoxColumn NameColumn;
         private DataGridViewTextBoxColumn QUANTITY;
         private DataGridViewTextBoxColumn SALEPRICE;
         private DataGridViewTextBoxColumn BUYPRICE;
-        private DataGridViewTextBoxColumn CATEGORYID;
+        private DataGridViewTextBoxColumn CATEGORYNAME;
     }
 }

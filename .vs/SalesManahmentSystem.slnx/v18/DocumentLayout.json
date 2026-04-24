@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "D:\\Courses\\Projects\\SalesManahmentSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystembll\\services\\stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|solutionrelative:salesmanahmentsystembll\\services\\stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystempl\\frmsaleorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\frmsaleorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FE37F4B4-7E45-4374-8618-668C273CCE2E}|SalesManahmentSystemDAL\\SalesManahmentSystemDAL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystemdal\\clsloggerevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE37F4B4-7E45-4374-8618-668C273CCE2E}|SalesManahmentSystemDAL\\SalesManahmentSystemDAL.csproj|solutionrelative:salesmanahmentsystemdal\\clsloggerevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE37F4B4-7E45-4374-8618-668C273CCE2E}|SalesManahmentSystemDAL\\SalesManahmentSystemDAL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystemdal\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE37F4B4-7E45-4374-8618-668C273CCE2E}|SalesManahmentSystemDAL\\SalesManahmentSystemDAL.csproj|solutionrelative:salesmanahmentsystemdal\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystempl\\frmcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\frmcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystembll\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|solutionrelative:salesmanahmentsystembll\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystempl\\frmcustomer.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\frmcustomer.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystempl\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystembll\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|solutionrelative:salesmanahmentsystembll\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|D:\\Courses\\Projects\\SalesManahmentSystem\\salesmanahmentsystempl\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE37F4B4-7E45-4374-8618-668C273CCE2E}|SalesManahmentSystemDAL\\SalesManahmentSystemDAL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystemdal\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE37F4B4-7E45-4374-8618-668C273CCE2E}|SalesManahmentSystemDAL\\SalesManahmentSystemDAL.csproj|solutionrelative:salesmanahmentsystemdal\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystembll\\servicesinterface\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|solutionrelative:salesmanahmentsystembll\\servicesinterface\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|D:\\Courses\\Projects\\SalesManahmentSystem\\salesmanahmentsystempl\\frmcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\frmcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystempl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AEBA1453-A670-277A-CA38-FC568D47EAD4}|SalesManahmentSystemPL\\SalesManahmentSystemPL.csproj|solutionrelative:salesmanahmentsystempl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|d:\\courses\\projects\\salesmanahmentsystem\\salesmanahmentsystembll\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC0E7563-FABB-4461-83A8-43915E3E0BF9}|SalesManahmentSystemBLL\\SalesManahmentSystemBLL.csproj|solutionrelative:salesmanahmentsystembll\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,72 +42,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "frmCustomer.cs [Design]",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmCustomer.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\frmCustomer.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmCustomer.cs [Design]",
-              "RelativeToolTip": "SalesManahmentSystemPL\\frmCustomer.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T16:57:17.633Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "frmCustomer.Designer.cs",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmCustomer.Designer.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\frmCustomer.Designer.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmCustomer.Designer.cs",
-              "RelativeToolTip": "SalesManahmentSystemPL\\frmCustomer.Designer.cs",
-              "ViewState": "AgIAAFQBAAAAAAAAAAAAwGEBAAAgAAAAAAAAAA==",
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmLogin.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\frmLogin.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmLogin.cs [Design]",
+              "RelativeToolTip": "SalesManahmentSystemPL\\frmLogin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T17:15:27.318Z",
+              "WhenOpened": "2026-04-23T15:46:51.334Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmCustomer.cs",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmCustomer.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\frmCustomer.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmCustomer.cs",
-              "RelativeToolTip": "SalesManahmentSystemPL\\frmCustomer.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAuwGkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemBLL\\Services\\LoginService.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\LoginService.cs",
+              "RelativeToolTip": "SalesManahmentSystemBLL\\Services\\LoginService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T16:58:30.181Z",
+              "WhenOpened": "2026-04-23T18:47:19.443Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsLoggerEvent.cs",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemDAL\\clsLoggerEvent.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemDAL\\clsLoggerEvent.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemDAL\\clsLoggerEvent.cs",
+              "RelativeToolTip": "SalesManahmentSystemDAL\\clsLoggerEvent.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T19:20:14.269Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CustomerService.cs",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\CustomerService.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemBLL\\Services\\CustomerService.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\CustomerService.cs",
-              "RelativeToolTip": "SalesManahmentSystemBLL\\Services\\CustomerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "frmLogin.cs",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmLogin.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\frmLogin.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmLogin.cs",
+              "RelativeToolTip": "SalesManahmentSystemPL\\frmLogin.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T17:02:36.39Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemDAL\\Models\\Customer.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemDAL\\Models\\Customer.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemDAL\\Models\\Customer.cs",
-              "RelativeToolTip": "SalesManahmentSystemDAL\\Models\\Customer.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAsAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T17:34:10.978Z",
+              "WhenOpened": "2026-04-23T19:35:49.294Z",
               "IsPinned": true
             },
             {
@@ -136,42 +122,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmSaleOrder.cs",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmSaleOrder.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\frmSaleOrder.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\frmSaleOrder.cs",
-              "RelativeToolTip": "SalesManahmentSystemPL\\frmSaleOrder.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAApwA8AAAAIAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\Program.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemPL\\Program.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemPL\\Program.cs",
+              "RelativeToolTip": "SalesManahmentSystemPL\\Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-19T13:00:48.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-23T20:30:18.909Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "ILoginService.cs",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\ServicesInterface\\ILoginService.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemBLL\\ServicesInterface\\ILoginService.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\ServicesInterface\\ILoginService.cs",
+              "RelativeToolTip": "SalesManahmentSystemBLL\\ServicesInterface\\ILoginService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T20:06:40.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "SalesManahmentSystemBLL\\Services\\ProductService.cs",
+              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\ProductService.cs",
+              "RelativeToolTip": "SalesManahmentSystemBLL\\Services\\ProductService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T19:54:58.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "DataBaseHelper.cs",
               "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemDAL\\DataBaseHelper.cs",
               "RelativeDocumentMoniker": "SalesManahmentSystemDAL\\DataBaseHelper.cs",
               "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemDAL\\DataBaseHelper.cs",
               "RelativeToolTip": "SalesManahmentSystemDAL\\DataBaseHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAqwE0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T23:28:30.167Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StockService.cs",
-              "DocumentMoniker": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\StockService.cs",
-              "RelativeDocumentMoniker": "SalesManahmentSystemBLL\\Services\\StockService.cs",
-              "ToolTip": "D:\\Courses\\Projects\\SalesManahmentSystem\\SalesManahmentSystemBLL\\Services\\StockService.cs",
-              "RelativeToolTip": "SalesManahmentSystemBLL\\Services\\StockService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAQwBgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T18:46:01.237Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-23T19:27:02.582Z"
             }
           ]
         },

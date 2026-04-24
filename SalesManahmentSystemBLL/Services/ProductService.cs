@@ -3,25 +3,39 @@ using System.Text;
 using SalesManahmentSystemDAL;
 using SalesManahmentSystemDAL.Models;
 using System.Data;
+using SalesManahmentSystemBLL.ServicesInterface;
 
 namespace SalesManahmentSystemBLL.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        public static IEnumerable<Product> GetAllProducts()
+        public async Task<IEnumerable<ProductsViewDTO>> GetAllProducts()
         {
-            IEnumerable<Product> Products = 
-                DataBaseHelper.ExecuteSelect<Product>("SELECT * FROM PRODUCTS");
+            IEnumerable<ProductsViewDTO> Products = 
+              await  DataBaseHelper.Instance.ExecuteSelect<ProductsViewDTO>
+ (@"SELECT P.ID, P.NAME, BUYPRICE, SALEPRICE, QUANTITY, c.NAME AS CATEGORYNAME 
+FROM PRODUCTS P INNER JOIN CATEGORYS c ON P.CATEGORYID = c.ID");
             
             return Products;
         }
-        public static IEnumerable<ProductReadBasicDTO> GetAllBasicProducts()
+        public async Task<IEnumerable<ProductsViewDTO>> GetAllProductsByPattern(string pattern)
         {
-            IEnumerable<ProductReadBasicDTO> Products = 
-                DataBaseHelper.ExecuteSelect<ProductReadBasicDTO>("SELECT ID, NAME FROM PRODUCTS");
+            string WarrpedPattern = $"%{pattern}%";
+            IEnumerable<ProductsViewDTO> Products =
+              await DataBaseHelper.Instance.ExecuteSelect<ProductsViewDTO>
+                (@"SELECT P.ID, P.NAME, BUYPRICE, SALEPRICE, QUANTITY, c.NAME AS CATEGORYNAME 
+FROM PRODUCTS P INNER JOIN CATEGORYS c ON P.CATEGORYID = c.ID 
+WHERE P.NAME LIKE @Pattern OR CAST(P.ID AS VARCHAR) LIKE @Pattern",
+                new { Pattern = WarrpedPattern });
             return Products;
         }
-        public static string UpdateProductsQuantityGetCommand(List<Product> products)
+        public async Task<IEnumerable<ProductReadBasicDTO>> GetAllBasicProducts()
+        {
+            IEnumerable<ProductReadBasicDTO> Products = 
+              await  DataBaseHelper.Instance.ExecuteSelect<ProductReadBasicDTO>("SELECT ID, NAME FROM PRODUCTS");
+            return Products;
+        }
+        public string UpdateProductsQuantityGetCommand(List<Product> products)
         {
             StringBuilder commandBuilder = new StringBuilder();
             foreach (var product in products)
@@ -30,47 +44,46 @@ namespace SalesManahmentSystemBLL.Services
             }
             return commandBuilder.ToString();
         }
-        public static IEnumerable<Product> GetAllProductsByPattern(string pattern)
+        
+        public async Task<Product?> GetProductByID(int productID)
         {
-            string WarrpedPattern = $"%{pattern}%";
-            IEnumerable<Product> Products = 
-                DataBaseHelper.ExecuteSelect<Product>
-                ("SELECT * FROM PRODUCTS WHERE NAME LIKE @Pattern OR CAST(ID AS VARCHAR) LIKE @Pattern", 
-                new { Pattern = WarrpedPattern });
-            return Products;
-        }
-        public static Product? GetProductByID(int productID)
-        {
-            return
- DataBaseHelper.QuerySingleOrDefualt<Product>
+            return await
+ DataBaseHelper.Instance.QuerySingleOrDefualt<Product>
  ("SELECT * FROM PRODUCTS WHERE ID = @ProductID", new {ProductID = productID});
         }
-        public static bool AddProduct(Product Product)
+        public async Task<bool> AddProduct(Product Product)
         {
             string command = 
-                $@"INSERT INTO PRODUCTS (Name, BuyPrice, SalePrice ,Quantity, CategoryID) 
-                VALUES (N'{Product.Name}', {Product.BuyPrice}, {Product.SalePrice}, {Product.Quantity}, {Product.CategoryID})";
-            int affectedRows = DataBaseHelper.ExecuteDML(command);
+                $@"INSERT INTO PRODUCTS (Name, BuyPrice, SalePrice ,Quantity, CATEGORYID) 
+                VALUES ( @Name, @BuyPrice, @SalePrice, @Quantity, @CategoryID)";
+            int affectedRows = await DataBaseHelper.Instance.ExecuteDML(command, new
+            {
+                Name = Product.Name,
+                BuyPrice = Product.BuyPrice,
+                SalePrice = Product.SalePrice,
+                Quantity = Product.Quantity,
+                CategoryID = Product.CategoryID
+            });
             return affectedRows > 0;
         }
-        public static bool UpdateProduct(Product Product)
+        public async Task<bool> UpdateProduct(Product Product)
         {
             string command = $@"UPDATE PRODUCTS SET 
 Name = N'{Product.Name}', BuyPrice =  {Product.BuyPrice}, SalePrice = {Product.SalePrice}, Quantity = {Product.Quantity}
 WHERE ID = {Product.ID}";
-            int affectedRows = DataBaseHelper.ExecuteDML(command);
+            int affectedRows = await DataBaseHelper.Instance.ExecuteDML(command);
             return affectedRows > 0;
         }
-        public static bool DeleteProduct(int ProductId)
+        public async Task<bool> DeleteProduct(int ProductId)
         {
             string command = $"DELETE FROM PRODUCTS WHERE ID = {ProductId}";
-            int affectedRows = DataBaseHelper.ExecuteDML(command);
+            int affectedRows = await DataBaseHelper.Instance.ExecuteDML(command);
             return affectedRows > 0;
         }
-        public static bool DeleteAllProduct()
+        public async Task<bool> DeleteAllProduct()
         {
             string command = "DELETE FROM PRODUCTS";
-            int affectedRows = DataBaseHelper.ExecuteDML(command);
+            int affectedRows = await DataBaseHelper.Instance.ExecuteDML(command);
             return affectedRows > 0;
         }
     }

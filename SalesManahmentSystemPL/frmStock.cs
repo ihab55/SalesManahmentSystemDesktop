@@ -1,4 +1,5 @@
 ﻿using SalesManahmentSystemBLL.Services;
+using SalesManahmentSystemBLL.ServicesInterface;
 using SalesManahmentSystemDAL.Models;
 using System;
 using System.Collections.Generic;
@@ -12,29 +13,32 @@ namespace SalesManahmentSystemPL
 {
     public partial class frmStock : Form
     {
-        public frmStock()
+        private readonly IStockService _stockService;
+
+        public frmStock(IStockService stockService)
         {
+            _stockService = stockService;
             InitializeComponent();
         }
-        private bool CheckValidation(TextBox text)
+        private bool CheckValidation(params TextBox [] texts)
         {
-            if (string.IsNullOrWhiteSpace(text.Text))
-            {
-                errorProvider1.SetError(text, "This field is required.");
-                return false;
+            foreach (var text in texts){
+                if (string.IsNullOrWhiteSpace(text.Text))
+                {
+                    errorProvider1.SetError(text, "This field is required.");
+                    return false;
+                }
             }
             errorProvider1.Clear();
             return true;
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (CheckValidation(txtName))
             {
-
-                int ID = Convert.ToInt32(txtID.Text);
                 string Name = txtName.Text;
-                decimal TotalPrice = numStocks.Value;
-                MessageBox.Show(StockService.AddStock(new Stock(Name, TotalPrice)) ?
+                decimal TotalPrice = numTotalMoney.Value;
+                MessageBox.Show(await _stockService.AddStock(new Stock(Name, TotalPrice)) ?
                     "تم إضافة خزنة جديدة!" : "هناك خطا فى الاضافة!","معلومة",MessageBoxButtons.OK
                     ,MessageBoxIcon.Information);
                 frmStock_Load(sender, e);
@@ -46,25 +50,25 @@ namespace SalesManahmentSystemPL
         {
             if (e.RowIndex >= 0)
             {
-                txtID.Text = dgStoks.Rows[e.RowIndex].Cells[0].Value?.ToString();
-                txtName.Text = dgStoks.Rows[e.RowIndex].Cells[1].Value?.ToString();
-                numStocks.Value = Convert.ToInt32(dgStoks.Rows[e.RowIndex].Cells[2].Value);
+                txtID.Text = dgStocks.Rows[e.RowIndex].Cells[0].Value?.ToString();
+                txtName.Text = dgStocks.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                numTotalMoney.Value = Convert.ToInt32(dgStocks.Rows[e.RowIndex].Cells[2].Value);
             }
         }
 
-        private void frmStock_Load(object sender, EventArgs e)
+        private async void frmStock_Load(object sender, EventArgs e)
         {
-            dgStoks.DataSource = StockService.GetAllStocks();
+            dgStocks.DataSource =await _stockService.GetAllStocks();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (CheckValidation(txtName) && CheckValidation(txtID))
+            if (CheckValidation(txtName, txtID))
             {
                 int ID = Convert.ToInt32(txtID.Text);
                 string name = txtName.Text;
-                decimal totalPrice = numStocks.Value;
-                MessageBox.Show(StockService.UpdateStock(
+                decimal totalPrice = numTotalMoney.Value;
+                MessageBox.Show(await _stockService.UpdateStock(
                     new Stock(ID, name, totalPrice)) ?
                     "! تم التعديل بنجاح" : "تاكد من الكتابة بشكل صحيح !", "معلومات",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,7 +76,7 @@ namespace SalesManahmentSystemPL
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل تريد حذف تلك المجموعة",
                 "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -80,7 +84,7 @@ namespace SalesManahmentSystemPL
                 if (CheckValidation(txtID))
                 {
                     int ID = Convert.ToInt32(txtID.Text);
-                    MessageBox.Show(StockService.DeleteStock(ID) ?
+                    MessageBox.Show(await _stockService.DeleteStock(ID) ?
                         "تم حذف المجموعة" : "هناك مشكلة تواصل مع الدعم", "معلومة",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmStock_Load(sender, e);
@@ -88,7 +92,7 @@ namespace SalesManahmentSystemPL
             }
         }
 
-        private void btnDeleteAll_Click(object sender, EventArgs e)
+        private async void btnDeleteAll_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل تريد حذف الجميع !!",
                 "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -96,20 +100,21 @@ namespace SalesManahmentSystemPL
                 if (CheckValidation(txtID))
                 {
                     int ID = Convert.ToInt32(txtID.Text);
-                    MessageBox.Show(StockService.DeleteAllStocks() ?
+                    MessageBox.Show(await _stockService.DeleteAllStocks() ?
                         "تم حذف الجميع" : "هناك مشكلة تواصل مع الدعم", "معلومة",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmStock_Load(sender, e);
+                    btnNew_Click(sender, e);
                 }
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             if (CheckValidation(txtSearch))
             {
-                IEnumerable<Stock> Stocks = StockService.GetAllStocksByPattern(txtSearch.Text);
-                dgStoks.DataSource = Stocks;
+                IEnumerable<Stock> Stocks = await _stockService.GetAllStocksByPattern(txtSearch.Text);
+                dgStocks.DataSource = Stocks;
             }
             else
             {
@@ -120,7 +125,7 @@ namespace SalesManahmentSystemPL
         private void btnNew_Click(object sender, EventArgs e)
         {
             txtName.Text = txtSearch.Text = string.Empty;
-            numStocks.Value = 0;
+            numTotalMoney.Value = 0;
         }
     }
 }

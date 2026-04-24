@@ -19,22 +19,30 @@ namespace SalesManahmentSystemPL
 
         private void btnCatagoreys_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmCatagory());
+            var categoryService = new CategoryService();
+            OpenForm(new frmCatagory(categoryService));
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmProduct());
+            var productService = new ProductService();
+            var categoryService = new CategoryService();
+            OpenForm(new frmProduct(productService, categoryService));
         }
 
         private void btnSaleOrder_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmSaleOrder());
+            var productService = new ProductService();
+            var customerService = new CustomerService();
+            var saleOrderService = new SaleOrderService();
+            var stockService = new StockService();
+            OpenForm(new frmSaleOrder(productService, customerService, saleOrderService, stockService));
         }
 
         private void btnSaleOrderReport_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmSaleOrderReport());
+            var saleOrderProductService = new SaleOrderProductService();
+            OpenForm(new frmSaleOrderReport(saleOrderProductService));
         }
         private void OpenForm(Form frm)
         {
@@ -43,17 +51,21 @@ namespace SalesManahmentSystemPL
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmStock());
+            var stockService = new StockService();
+            OpenForm(new frmStock(stockService));
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmCustomer());
+            var customerService = new CustomerService();
+            OpenForm(new frmCustomer(customerService));
         }
 
         private void btnStockDetails_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmStockDetails());
+            var stockService = new StockService();
+            var stockDetailsService = new StockDetailsService();
+            OpenForm(new frmStockDetails(stockService, stockDetailsService));
         }
     }
 }

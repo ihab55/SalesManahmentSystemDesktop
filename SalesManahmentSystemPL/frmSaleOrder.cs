@@ -1,4 +1,6 @@
-﻿using SalesManahmentSystemBLL.Services;
+﻿using SalesManahmentSystemBLL.DTOs;
+using SalesManahmentSystemBLL.Services;
+using SalesManahmentSystemBLL.ServicesInterface;
 using SalesManahmentSystemDAL.Models;
 using System;
 using System.Collections.Generic;
@@ -12,26 +14,42 @@ namespace SalesManahmentSystemPL
 {
     public partial class frmSaleOrder : Form
     {
-        public frmSaleOrder()
+        private readonly IProductService _productService;
+        private readonly ICustomerService _customerService;
+        private readonly ISaleOrderService _saleOrderService;
+        private readonly IStockService _stockService;
+
+        public frmSaleOrder(IProductService productService, ICustomerService customerService, ISaleOrderService saleOrderService, IStockService stockService)
         {
+            _productService = productService;
+            _customerService = customerService;
+            _saleOrderService = saleOrderService;
+            _stockService = stockService;
             InitializeComponent();
         }
 
-        private void frmSaleOrder_Load(object sender, EventArgs e)
+        private async void frmSaleOrder_Load(object sender, EventArgs e)
         {
-            cbProducts.DataSource = ProductService.GetAllBasicProducts();
+            cbProducts.DataSource = await _productService.GetAllBasicProducts();
             cbProducts.DisplayMember = "Name";
             cbProducts.ValueMember = "ID";
 
-            cbCutomers.DataSource = CustomerService.GetAllBasicCustomers();
+            cbCutomers.DataSource = await _customerService.GetAllBasicCustomers();
             cbCutomers.DisplayMember = "Name";
             cbCutomers.ValueMember = "ID";
 
-            txtID.Text = (SaleOrderService.GetLastID() + 1).ToString();
+            cbStock.DataSource = await _stockService.GetAllBasicStocks();
+            cbStock.DisplayMember = "Name";
+            cbStock.ValueMember = "ID";
+
+            // Set default type to Sale
+            rbSale.Checked = true;
+
+            txtID.Text = (await _saleOrderService.GetLastID() + 1).ToString();
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
-            Product product = ProductService.GetProductByID(Convert.ToInt32(cbProducts?.SelectedValue));
+            Product? product = await _productService.GetProductByID(Convert.ToInt32(cbProducts?.SelectedValue));
             if (product != null)
             {
                 decimal quantity = Convert.ToDecimal(numCount.Value);
@@ -66,7 +84,7 @@ namespace SalesManahmentSystemPL
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             // Create the SaleOrder object
             SaleOrder saleOrder = new SaleOrder
@@ -93,7 +111,7 @@ namespace SalesManahmentSystemPL
                     productID,
                     saleOrder.ID
                 ));
-                Product? product = ProductService.GetProductByID(productID);
+                Product? product = await _productService.GetProductByID(productID);
                 if (product == null)
                 {
                     MessageBox.Show("حدث خطأ في جلب بيانات المنتج", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -103,25 +121,41 @@ namespace SalesManahmentSystemPL
                 products.Add(product);
             }
 
-            // Create Stock objects
-            //Somethimg wrong here, I will fix it later             --------
+            // Get selected stock
+            int selectedStockId = Convert.ToInt32(cbStock.SelectedValue);
+            StockBasicDTO? selectedStock = (cbStock.SelectedItem as StockBasicDTO);
             Stock stock = new Stock
             (
-                1,
-                "Stock1",
+                selectedStockId,
+                selectedStock?.Name ?? "",
                 numTotalPrice.Value
             );
+
+            // Determine selected type
+            StockDetails.enType selectedType = StockDetails.enType.Sale;
+            if (rbPurchase.Checked) selectedType = StockDetails.enType.Purchase;
+            else if (rbExpense.Checked) selectedType = StockDetails.enType.Expense;
+
             // create StockDetail objects
             StockDetails stockDetails = new StockDetails
             (
-                stock.ID,
-                StockDetails.enType.Sale,
+                selectedStockId,
+                selectedType,
                 numTotalPrice.Value,
                 dtpTime.Value,
                 Convert.ToInt32(txtID.Text)
             );
-            
-            bool IsSuccess = SaleOrderService.InsertSalesOrderTransaction(saleOrder, saleOrderProducts, products, stock, stockDetails);
+
+            if (rbPurchase.Checked) 
+                {
+                  saleOrder.TotalOrder *= -1;
+                products.ForEach(p => p.Quantity *= -1);
+                 stock.TotalMoney *= -1;
+                 stockDetails.Total *= -1;
+                 stockDetails.Type = StockDetails.enType.Purchase;
+
+            }
+            bool IsSuccess = await _saleOrderService.InsertSalesOrderTransaction(saleOrder, saleOrderProducts, products, stock, stockDetails);
             if (IsSuccess)
             {
                 MessageBox.Show("تم حفظ الطلب بنجاح", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);

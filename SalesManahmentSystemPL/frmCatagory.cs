@@ -1,4 +1,5 @@
 ﻿using SalesManahmentSystemBLL.Services;
+using SalesManahmentSystemBLL.ServicesInterface;
 using SalesManahmentSystemDAL.Models;
 using System;
 using System.Collections.Generic;
@@ -12,21 +13,29 @@ namespace SalesManahmentSystemPL
 {
     public partial class frmCatagory : Form
     {
-        public frmCatagory()
+        private readonly ICategoryService _categoryService;
+
+        public frmCatagory(ICategoryService categoryService)
         {
+            _categoryService = categoryService;
             InitializeComponent();
         }
         private bool CheckValidation(TextBox text)
         {
             if (string.IsNullOrWhiteSpace(text.Text))
             {
-                errorProvider1.SetError(text, "This field is required.");
+                errorProvider1.SetError(text, "من فضلك أضف ذلك الحقل.");
                 return false;
             }
             errorProvider1.Clear();
             return true;
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Add Category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (CheckValidation(txtName))
             {
@@ -34,8 +43,9 @@ namespace SalesManahmentSystemPL
                 int ID = Convert.ToInt32(txtID.Text);
                 string name = txtName.Text;
                 ;
-                MessageBox.Show(CategoryService.AddCategory(new Category(ID, name)) ?
-                    "Category added successfully!" : "Category Failed to add!");
+                MessageBox.Show(await _categoryService.AddCategory(new Category(ID, name)) ?
+                    "تم إضافة المجموعة!" : "هناك خطا!","معلومه", MessageBoxButtons.OK
+                    ,MessageBoxIcon.Information);
                 FrmCatagory_Load(sender, e);
 
             }
@@ -50,25 +60,25 @@ namespace SalesManahmentSystemPL
             }
         }
 
-        private void FrmCatagory_Load(object sender, EventArgs e)
+        private async void FrmCatagory_Load(object sender, EventArgs e)
         {
-            dgCatagories.DataSource = CategoryService.GetAllCategories();
+            dgCatagories.DataSource = await _categoryService.GetAllCategories();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             if (CheckValidation(txtName) && CheckValidation(txtID))
             {
                 int ID = Convert.ToInt32(txtID.Text);
                 string name = txtName.Text;
-                MessageBox.Show(CategoryService.UpdateCategory(new Category(ID, name)) ?
+                MessageBox.Show(await _categoryService.UpdateCategory(new Category(ID, name)) ?
                     "! تم التعديل بنجاح" : "تاكد من الكتابة بشكل صحيح !", "معلومات",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FrmCatagory_Load(sender, e);
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل تريد حذف تلك المجموعة",
                 "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -76,7 +86,7 @@ namespace SalesManahmentSystemPL
                 if (CheckValidation(txtID))
                 {
                     int ID = Convert.ToInt32(txtID.Text);
-                    MessageBox.Show(CategoryService.DeleteCategory(ID) ?
+                    MessageBox.Show(await _categoryService.DeleteCategory(ID) ?
                         "تم حذف المجموعة" : "هناك مشكلة تواصل مع الدعم", "معلومة",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FrmCatagory_Load(sender, e);
@@ -84,7 +94,7 @@ namespace SalesManahmentSystemPL
             }
         }
 
-        private void btnDeleteAll_Click(object sender, EventArgs e)
+        private async void btnDeleteAll_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل تريد حذف الجميع !!",
                 "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -92,7 +102,7 @@ namespace SalesManahmentSystemPL
                 if (CheckValidation(txtID))
                 {
                     int ID = Convert.ToInt32(txtID.Text);
-                    MessageBox.Show(CategoryService.DeleteAllCategory() ?
+                    MessageBox.Show(await _categoryService.DeleteAllCategory() ?
                         "تم حذف الجميع" : "هناك مشكلة تواصل مع الدعم", "معلومة",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FrmCatagory_Load(sender, e);
@@ -100,11 +110,11 @@ namespace SalesManahmentSystemPL
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             if (CheckValidation(txtSearch))
             {
-                IEnumerable<Category> categories = CategoryService.GetAllCategoriesByPattern(txtSearch.Text);
+                IEnumerable<Category> categories = await _categoryService.GetAllCategoriesByPattern(txtSearch.Text);
                 dgCatagories.DataSource = categories;
             }
             else

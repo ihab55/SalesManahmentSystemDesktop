@@ -1,17 +1,21 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using SalesManahmentSystemBLL.ServicesInterface;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SalesManahmentSystemDAL
 {
-    public static class DataBaseHelper
+    public class DataBaseHelper
     {
-        static IDbConnection connection;
-        static DataBaseHelper()
+        IDbConnection connection;
+        private static DataBaseHelper? _instance;
+        private static readonly object _lock = new object();
+        private DataBaseHelper()
         {
             if (connection == null)
             {
@@ -20,23 +24,40 @@ namespace SalesManahmentSystemDAL
 Trusted_Connection=True; TrustServerCertificate = True;");
             }
         }
-        public static IEnumerable<T> ExecuteSelect<T>(string query, 
+        public static DataBaseHelper Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new DataBaseHelper();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+        public  async Task<IEnumerable<T>> ExecuteSelect<T>(string query, 
             object? parameters =null)
         {
-            return connection.Query<T>(query, parameters);
+            return await connection.QueryAsync<T>(query, parameters);
             
         }
-        public static T? QuerySingleOrDefualt<T>(string query, object? parameters = null)
+        public  async Task<T?> QuerySingleOrDefualt<T>(string query, object? parameters = null)
         {
-            return connection.QuerySingleOrDefault<T>(query, parameters);
+            return await connection.QuerySingleOrDefaultAsync<T>(query, parameters);
         }
 
-        public static int ExecuteDML(string command, object? paramter = null)
+        public  async Task<int> ExecuteDML(string command, object? paramter = null)
         {
-            int affectedRows = connection.Execute(command, paramter);
+            int affectedRows = await connection.ExecuteAsync(command, paramter);
             return affectedRows;
         }
-        public static bool ExecuteTransaction(List<string> commands)
+        public  async Task<bool> ExecuteTransaction(List<string> commands)
         {
             bool isSuccess = false;
             try
@@ -47,13 +68,14 @@ Trusted_Connection=True; TrustServerCertificate = True;");
                     {
                         foreach (string command in commands)
                         {
-                            connection.Execute(command, transaction: transaction);
+                            await connection.ExecuteAsync(command, transaction: transaction);
                         }
                         transaction.Commit();
                         isSuccess = true;
                     }
                     catch (Exception ex)
                     {
+                        ex.LogEvent();
                         transaction.Rollback();
                         // Handle exceptions (e.g., log the error)
                         return isSuccess;
@@ -62,6 +84,7 @@ Trusted_Connection=True; TrustServerCertificate = True;");
             }
             catch (Exception ex)
             {
+                ex.LogEvent();
                 return false;
             }
             finally

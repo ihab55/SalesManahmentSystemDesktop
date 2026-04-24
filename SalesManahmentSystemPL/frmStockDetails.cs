@@ -1,5 +1,6 @@
 using SalesManahmentSystemBLL.DTOs;
 using SalesManahmentSystemBLL.Services;
+using SalesManahmentSystemBLL.ServicesInterface;
 using SalesManahmentSystemDAL.Models;
 using System;
 using System.Collections.Generic;
@@ -13,44 +14,51 @@ namespace SalesManahmentSystemPL
 {
     public partial class frmStockDetails : Form
     {
-        public frmStockDetails()
+        private readonly IStockService _stockService;
+        private readonly IStockDetailsService _stockDetailsService;
+
+        public frmStockDetails(IStockService stockService, IStockDetailsService stockDetailsService)
         {
+            _stockService = stockService;
+            _stockDetailsService = stockDetailsService;
             InitializeComponent();
         }
 
-        private void frmStockDetails_Load(object sender, EventArgs e)
+        private async void frmStockDetails_Load(object sender, EventArgs e)
         {
-            cbStock.DataSource = StockService.GetAllStocks();
+            cbStock.DataSource = await _stockService.GetAllBasicStocks();
             cbStock.DisplayMember = "Name";
             cbStock.ValueMember = "ID";
             cbStock.SelectedIndex = -1;
 
-            dgStockDetails.DataSource = StockDetailsService.GetAllStockDetails();
+            dgStockDetails.DataSource = await _stockDetailsService.GetAllStockDetails();
         }
 
-        private void btnAll_Click(object sender, EventArgs e)
+        private async void btnAll_Click(object sender, EventArgs e)
         {
-            dgStockDetails.DataSource = StockDetailsService.GetAllStockDetails();
+            dgStockDetails.DataSource = await _stockDetailsService.GetAllStockDetails();
             CalculateTotal();
         }
 
-        private void btnSearchByStock_Click(object sender, EventArgs e)
+        private async void btnSearchByStock_Click(object sender, EventArgs e)
         {
             if (cbStock.SelectedValue != null)
             {
                 int stockID = Convert.ToInt32(cbStock.SelectedValue);
-                dgStockDetails.DataSource = StockDetailsService.GetStockDetailsByStockID(stockID);
+                dgStockDetails.DataSource = await _stockDetailsService
+                    .GetStockDetailsByStockID(stockID);
                 CalculateTotal();
             }
         }
 
-        private void btnSearchByDate_Click(object sender, EventArgs e)
+        private async void btnSearchByDate_Click(object sender, EventArgs e)
         {
-            dgStockDetails.DataSource = StockDetailsService.GetStockDetailsByDateRange(dtpFrom.Value, dtpTo.Value);
+            dgStockDetails.DataSource = await _stockDetailsService
+                .GetStockDetailsByDateRange(dtpFrom.Value, dtpTo.Value);
             CalculateTotal();
         }
 
-        private void btnSearchByType_Click(object sender, EventArgs e)
+        private async void btnSearchByType_Click(object sender, EventArgs e)
         {
             StockDetails.enType type;
             if (rbSale.Checked)
@@ -60,7 +68,7 @@ namespace SalesManahmentSystemPL
             else
                 type = StockDetails.enType.Expense;
 
-            dgStockDetails.DataSource = StockDetailsService.GetStockDetailsByType(type);
+            dgStockDetails.DataSource = await _stockDetailsService.GetStockDetailsByType(type);
             CalculateTotal();
         }
 

@@ -1,42 +1,44 @@
 ﻿using SalesManahmentSystemDAL;
 using SalesManahmentSystemDAL.Models;
 using System.Data;
+using SalesManahmentSystemBLL.ServicesInterface;
+using SalesManahmentSystemBLL.DTOs;
 
 namespace SalesManahmentSystemBLL.Services
 {
-    public class StockService
+    public class StockService : IStockService
     {
-        public static string UpdateStockTotalMoneyGetCommand(Stock stock)
+        public string UpdateStockTotalMoneyGetCommand(Stock stock)
         {
             return $"UPDATE STOCKS SET TotalMoney = TotalMoney + {stock.TotalMoney} WHERE ID = {stock.ID};";
         }
-        public static bool AddStock(Stock NewStock)
+        public async Task<bool> AddStock(Stock NewStock)
         {
-            int AffecttedRow = DataBaseHelper.ExecuteDML
+            int AffecttedRow = await DataBaseHelper.Instance.ExecuteDML
                 ("INSERT INTO STOCKS ( NAME, TOTALMONEY) VALUES ( @Name, @TotalMoney)"
                 , new
                 {
-                    Name = "N'" + NewStock.Name +"'",
+                    Name =  NewStock.Name ,
                     TotalMoney = NewStock.TotalMoney
                 });
             return AffecttedRow > 0;
         }
-        public static IEnumerable<Stock> GetAllStocks()
+        public async Task<IEnumerable<Stock>> GetAllStocks()
         {
-            return DataBaseHelper.ExecuteSelect<Stock>("SELECT * FROM STOCKS");
+            return await DataBaseHelper.Instance.ExecuteSelect<Stock>("SELECT * FROM STOCKS");
         }
-        public static IEnumerable<Stock> GetAllStocksByPattern(string pattern)
+        public async Task<IEnumerable<Stock>> GetAllStocksByPattern(string pattern)
         {
             string WarrpedPattern = $"%{pattern}%";
             IEnumerable<Stock> Products =
-                DataBaseHelper.ExecuteSelect<Stock>
+               await DataBaseHelper.Instance.ExecuteSelect<Stock>
                 ("SELECT * FROM STOCKS WHERE NAME LIKE @Pattern OR CAST(ID AS VARCHAR) LIKE @Pattern",
                 new { Pattern = WarrpedPattern });
             return Products;
         }
-        public static bool UpdateStock(Stock stock)
+        public async Task<bool> UpdateStock(Stock stock)
         {
-            int AffecttedRow = DataBaseHelper.ExecuteDML
+            int AffecttedRow = await DataBaseHelper.Instance.ExecuteDML
                 ("UPDATE STOCKS SET NAME = @Name, TOTALMONEY = @TotalMoney WHERE ID = @ID"
                 , new
                 {
@@ -46,18 +48,23 @@ namespace SalesManahmentSystemBLL.Services
                 });
             return AffecttedRow > 0;
         }
-        public static bool DeleteStock(int ID)
+        public async Task<bool> DeleteStock(int ID)
         {
-            int AffecttedRow = DataBaseHelper.ExecuteDML
+            int AffecttedRow = await DataBaseHelper.Instance.ExecuteDML
                 ("DELETE FROM STOCKS WHERE ID = @ID"
                 , new { ID });
             return AffecttedRow > 0;
         }
-        public static bool DeleteAllStocks()
+        public async Task<bool> DeleteAllStocks()
         {
-            int AffecttedRow = DataBaseHelper.ExecuteDML("DELETE FROM STOCKS");
-            return AffecttedRow > 0;
+            int AffectedRows = await DataBaseHelper.Instance.ExecuteDML("DELETE FROM STOCKS");
+            return AffectedRows > 0;
         }
 
+        public async Task<IEnumerable<StockBasicDTO>> GetAllBasicStocks()
+        {
+            string query = "SELECT ID, NAME as Name FROM STOCKS ORDER BY NAME";
+            return await DataBaseHelper.Instance.ExecuteSelect<StockBasicDTO>(query);
+        }
     }
 }

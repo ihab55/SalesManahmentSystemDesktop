@@ -1,0 +1,16 @@
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\bin\Release\net10.0\SalesManahmentSystemBLL.deps.json
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\bin\Release\net10.0\SalesManahmentSystemBLL.dll
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\bin\Release\net10.0\SalesManahmentSystemBLL.pdb
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\bin\Release\net10.0\SalesManahmentSystemDAL.dll
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\bin\Release\net10.0\SalesManahmentSystemDAL.pdb
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.csproj.AssemblyReference.cache
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.AssemblyInfoInputs.cache
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.AssemblyInfo.cs
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.csproj.CoreCompileInputs.cache
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.sourcelink.json
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesMan.C41371A7.Up2Date
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.dll
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\refint\SalesManahmentSystemBLL.dll
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\SalesManahmentSystemBLL.pdb
+D:\Courses\Projects\SalesManahmentSystem\SalesManahmentSystemBLL\obj\Release\net10.0\ref\SalesManahmentSystemBLL.dll
